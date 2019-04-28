@@ -1,146 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/colorWhite"
-        tools:context=".MainActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <!-- TODO #1: Build Expense Section-->
-    <TextView
-        android:id="@+id/expensePerPersonTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        style="@style/h1Bold"
-        android:textColor="@color/colorAccent"
-        android:text="0"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="25dp"
-        style="@style/h2"
-        android:textColor="@color/colorAccent"
-        android:text="@string/perPersonStaticText"/>
-    <!-- TODO #1a: Add an Expense TextView-->
-    <!-- TODO #1b: Add an Expense Static TextView-->
-
-        <!-- TODO #2: Add Inputs Linear Layout-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/colorAccent">
-            <!-- TODO #3: Build Bill Section-->
-            <!-- TODO #3a: Add Bill Static TextView-->
-            <!-- TODO #3b: Add Bill EditText-->
-        <TextView
-            android:layout_margin="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            style="@style/h4"
-            android:text="@string/billStaticText"/>
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/billEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:inputType="numberDecimal"
-            android:maxLines="1"
-            style="@style/h2Bold"
-            android:text="0"/>
-            <!-- TODO #4: Build Tip Section-->
-            <!-- TODO #4a: Add Tip Static TextView-->
-            <!-- TODO #4b: Add Tip Linear Layout-->
-                <!-- TODO #4c: Add Tip Plus ImageButton-->
-                <!-- TODO #4d: Add Tip TextView-->
-                <!-- TODO #4d: Add Tip Minus ImageButton-->
         <TextView
-            android:layout_margin="15dp"
+            android:id="@+id/expensePerPersonTextView"
+            style="@style/h1Bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            style="@style/h4"
-            android:text="@string/tipStaticText"/>
+            android:paddingTop="30dp"
+            android:text="0"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            style="@style/h2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp"
+            android:text="@string/perPersonStaticText"
+            android:textColor="@color/colorAccent" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/subtractTipButton"
-                style="@style/operationButton"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/subtract"/>
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tipTextView"
-                android:layout_margin="15dp"
-                android:layout_width="0dp"
+                style="@style/h4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:layout_weight="1"
+                android:layout_margin="15dp"
+                android:text="@string/billStaticText"
+                android:textColor="@color/colorWhite" />
+
+            <EditText
+                android:id="@+id/billEditText"
                 style="@style/h2Bold"
-                android:text="20%"/>
-
-            <ImageButton
-                android:id="@+id/addTipButton"
-                style="@style/operationButton"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/add"/>
-
-        </LinearLayout>
-            <!-- TODO #5: Build People Section-->
-            <!-- TODO #5a: Add People Static TextView-->
-            <!-- TODO #5b: Add People Linear Layout-->
-                <!-- TODO #5c: Add People Plus ImageButton-->
-                <!-- TODO #5d: Add People TextView-->
-                <!-- TODO #5d: Add People Minus ImageButton-->
-        <TextView
-            android:layout_margin="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            style="@style/h4"
-            android:text="@string/numberOfPeopleStaticText"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/subtractPeopleButton"
-                style="@style/operationButton"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/subtract"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:text="0"
+                android:textColor="@color/colorWhite" />
 
             <TextView
-                android:id="@+id/numberOfPeopleTextView"
-                android:layout_margin="15dp"
-                android:layout_width="0dp"
+                style="@style/h4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:layout_weight="1"
-                style="@style/h2Bold"
-                android:text="4"/>
+                android:layout_margin="15dp"
+                android:text="@string/tipStaticText"
+                android:textColor="@color/colorWhite" />
 
-            <ImageButton
-                android:id="@+id/addPeopleButton"
-                style="@style/operationButton"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/add"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <ImageButton
+                    android:id="@+id/subtractTipButton"
+                    style="@style/operationButton"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/subtract" />
+
+                <TextView
+                    android:id="@+id/tipTextView"
+                    style="@style/h2Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:text="20%"
+                    android:textColor="@color/colorWhite" />
+
+                <ImageButton
+                    android:id="@+id/addTipButton"
+                    style="@style/operationButton"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/add" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/numberOfPeopleStaticText"
+                android:textColor="@color/colorWhite" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/subtractPeopleButton"
+                    style="@style/operationButton"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/subtract" />
+
+                <TextView
+                    android:id="@+id/numberOfPeopleTextView"
+                    style="@style/h2Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:text="4"
+                    android:textColor="@color/colorWhite" />
+
+                <ImageButton
+                    android:id="@+id/addPeopleButton"
+                    style="@style/operationButton"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/add" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

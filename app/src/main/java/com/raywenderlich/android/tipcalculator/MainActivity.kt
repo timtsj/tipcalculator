@@ -2,6 +2,9 @@ package com.raywenderlich.android.tipcalculator
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
@@ -14,9 +17,7 @@ const val MIN_PEOPLE = 2
 const val MAX_TIP = 95
 const val MAX_PEOPLE = 20
 
-//TODO #7: Implements Button Listener
-//TODO #15: Implements TextWatcher
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener, TextWatcher {
 
     // Top Section
     private lateinit var expensePerPersonTextView: TextView
@@ -43,32 +44,79 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        //TODO #6: Connect the Views
-        //TODO #13: Bind Buttons to Listener
-        //TODO #16: Bind EditText to TextWatcher
+        expensePerPersonTextView = findViewById(R.id.expensePerPersonTextView)
+        billEditText = findViewById(R.id.billEditText)
+
+        addTipButton = findViewById(R.id.addTipButton)
+        tipTextView = findViewById(R.id.tipTextView)
+        subtractTipButton = findViewById(R.id.subtractTipButton)
+
+        addPeopleButton = findViewById(R.id.addPeopleButton)
+        numberOfPeopleTextView = findViewById(R.id.numberOfPeopleTextView)
+        subtractPeopleButton = findViewById(R.id.subtractPeopleButton)
+
+        addTipButton.setOnClickListener(this)
+        subtractTipButton.setOnClickListener(this)
+
+        addPeopleButton.setOnClickListener(this)
+        subtractPeopleButton.setOnClickListener(this)
+
+        billEditText.addTextChangedListener(this)
     }
 
     private fun calculateExpense() {
-        //TODO #14: Implement and call calculateExpense as required
+        val totalBill = billEditText.text.toString().toDouble()
+
+        val totalExpense = ((HUNDRED_PERCENT + tipPercent) / HUNDRED_PERCENT) * totalBill
+        val individualExpense = totalExpense / numberOfPeople
+
+        expensePerPersonTextView.text = String.format("$%.2f", individualExpense)
     }
 
-    //TODO #8: Override onClick and implement a switch case to handle multiple buttons
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.addTipButton -> incrementTip()
+            R.id.subtractTipButton -> decrementTip()
+            R.id.addPeopleButton -> incrementPeople()
+            R.id.subtractPeopleButton -> decrementPeople()
+        }
+    }
 
     private fun incrementTip() {
-        //TODO #9: Implement Tip Increment
+        if (tipPercent != MAX_TIP) {
+            tipPercent += TIP_INCREMENT_PERCENT
+            tipTextView.text = String.format("%d%%", tipPercent)
+        }
     }
 
     private fun decrementTip() {
-        //TODO #10: Implement Tip Decrement
+        if (tipPercent != MIN_TIP) {
+            tipPercent -= TIP_INCREMENT_PERCENT
+            tipTextView.text = String.format("%d%%", tipPercent)
+        }
     }
 
     private fun incrementPeople() {
-        //TODO #11: Implement People Increment
+        if (numberOfPeople != MAX_PEOPLE) {
+            numberOfPeople += PEOPLE_INCREMENT_VALUE
+            numberOfPeopleTextView.text = numberOfPeople.toString()
+        }
     }
 
     private fun decrementPeople() {
-        //TODO #12: Implement People Decrement
+        if (numberOfPeople != MIN_PEOPLE) {
+            numberOfPeople -= PEOPLE_INCREMENT_VALUE
+            numberOfPeopleTextView.text = numberOfPeople.toString()
+        }
     }
 
-    //TODO #17: Implement onTextChanged, beforeTextChanged & afterTextChanged
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        if (!billEditText.text.isEmpty()) {
+            calculateExpense()
+        }
+    }
+
+    override fun afterTextChanged(s: Editable?) {}
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 }
